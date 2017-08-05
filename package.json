@@ -12,7 +12,7 @@
     "webpack-production": "webpack -p --env.production",
     "build-css": "elm-css src/Stylesheets.elm",
     "build-node": "tsc src/main/main.ts --outDir .",
-    "generate-ipc": "elm-electron src/Ipc.elm --ts typescript/ipc.ts --elm src/IpcSerializer.elm",
+    "generate-ipc": "elm-electron src/renderer/Ipc.elm --ts src/main/ipc.ts --elm src/renderer/IpcSerializer.elm",
     "test-watch": "npm test; fswatch -0 src tests -e '.*' -i \\.elm$ | xargs -0 -n1 -I{} npm test",
     "test": "clear && echo 'running tests' && elm-test",
     "pack": "build --dir",

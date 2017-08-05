@@ -3,7 +3,7 @@ This is the main Electron NodeJS process, used to control global application sta
 like windows, global shortcuts, the tray, etc.
 See the "Main Process" section in the docs: https://electron.atom.io/docs/
 */
-import { ipcMain, app, Tray, BrowserWindow, screen } from 'electron'
+import { ipcMain, app, Tray, BrowserWindow, screen, dialog } from 'electron'
 import * as fs from 'fs'
 const isLocal = require('electron-is-dev')
 // import { Ipc, ElmIpc } from './typescript/ipc'
@@ -19,6 +19,9 @@ require('electron-debug')({
 
 import * as path from 'path'
 import * as url from 'url'
+
+import { Ipc, ElmIpc } from './ipc'
+
 const log = require('electron-log')
 const assetsDirectory = path.join(__dirname, 'assets')
 const { version } = require('./package.json')
@@ -68,6 +71,22 @@ const onWindows = /^win/.test(process.platform)
 function onReady() {
   createMainWindow()
   setupAutoUpdater()
+  Ipc.setupIpcMessageHandler((ipc: ElmIpc) => {
+    if (ipc.message === 'Quit') {
+      app.quit()
+    } else if (ipc.message === 'GreetingDialog') {
+      dialog.showMessageBox(mainWindow, { message: 'Hello!' })
+    } else {
+      /*
+      the exhaustive check assignment
+      ensures that you handle every possible message
+      see: https://basarat.gitbooks.io/typescript/docs/types/discriminated-unions.html
+      Note: there is currently a typescript bug that will give a compiler error
+      if there is only one type in the union so you need at least two messages in renderer/Ipc.elm.
+      */
+      const _exhaustiveCheck: never = ipc
+    }
+  })
 }
 
 // This method will be called when Electron has finished

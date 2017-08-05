@@ -2,6 +2,9 @@ module Main exposing (..)
 
 import Html exposing (Html, button, div, h1, p, text)
 import Html.Events exposing (onClick)
+import Ipc
+import IpcSerializer
+import Ports
 
 
 main : Program Never Model Msg
@@ -31,6 +34,7 @@ init =
 type Msg
     = Increment
     | Decrement
+    | SendIpc Ipc.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -42,6 +46,16 @@ update msg model =
         Decrement ->
             ( model - 1, Cmd.none )
 
+        SendIpc ipcMsg ->
+            model ! [ sendIpcCmd ipcMsg ]
+
+
+sendIpcCmd : Ipc.Msg -> Cmd msg
+sendIpcCmd ipcMsg =
+    ipcMsg
+        |> IpcSerializer.serialize
+        |> Ports.sendIpc
+
 
 view : Model -> Html Msg
 view model =
@@ -51,4 +65,6 @@ view model =
         , button [ onClick Decrement ] [ text "-" ]
         , div [] [ text (toString model) ]
         , button [ onClick Increment ] [ text "+" ]
+        , button [ onClick (SendIpc Ipc.GreetingDialog) ] [ text "Greeting Dialog" ]
+        , button [ onClick (SendIpc Ipc.Quit) ] [ text "Quit" ]
         ]
