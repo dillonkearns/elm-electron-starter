@@ -5,6 +5,9 @@
     <title>Page Title</title>
   </head>
   <body>
-    <script type="text/javascript" src="http://localhost:8080/renderer.bundle.js"></script>
+    <script type="text/javascript">
+    const $ = require('jquery')
+$.getScript('http://localhost:8080/renderer.bundle.js')
+</script>
   </body>
 </html>
