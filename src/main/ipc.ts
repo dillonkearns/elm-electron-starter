@@ -1,3 +1,4 @@
+
 import { ipcMain } from 'electron'
 
 class Ipc {
@@ -9,6 +10,7 @@ class Ipc {
 }
 
 export { Ipc, ElmIpc }
+    
 
 type ElmIpc = Quit | GreetingDialog
 
