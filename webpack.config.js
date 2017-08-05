@@ -1,11 +1,10 @@
 const webpack = require('webpack')
 const path = require('path')
 
-export default (env: any) => {
+const config = env => {
   return {
     entry: {
-      setup: './typescript/setup.ts',
-      timer: './typescript/timer.ts'
+      renderer: './src/renderer/renderer.ts'
     },
     target: 'electron-renderer',
     output: {
@@ -31,3 +30,5 @@ export default (env: any) => {
     }
   }
 }
+
+module.exports = config

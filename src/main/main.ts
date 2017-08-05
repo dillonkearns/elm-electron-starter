@@ -31,14 +31,14 @@ let checkForUpdates = true
 let mainWindow: Electron.BrowserWindow
 
 function createMainWindow() {
-  // Create the browser window.
   mainWindow = new BrowserWindow({ width: 800, height: 600 })
 
-  // and load the index.html of the app.
   mainWindow.loadURL(
     url.format({
-      pathname: path.join(__dirname, 'src/renderer/index.html'),
-      protocol: 'file:',
+      hostname: 'localhost',
+      pathname: path.join('src/renderer/index.html'),
+      protocol: 'http:',
+      port: '8080',
       slashes: true
     })
   )
