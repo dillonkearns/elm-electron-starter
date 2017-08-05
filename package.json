@@ -5,8 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "NODE_ENV=dev concurrently --kill-others 'npm run webpack-dev' 'npm run build-node && electron .'",
-    "startfull": "NODE_ENV=dev concurrently --kill-others 'npm run generate-ipc && npm run webpack-dev' 'npm run build-node && npm test && npm run build-css && electron .'",
-    "startprod": "NODE_ENV=production npm run build-node && npm run webpack-production && electron .",
+    "startfull": "concurrently --kill-others 'npm run generate-ipc && npm run webpack-dev' 'npm run build-node && npm test && npm run build-css && electron .'",
+    "startprod": "NODE_ENV=production npm run build && electron .",
+    "build": "NODE_ENV=production npm run build-node && npm run webpack-production",
     "webpack-dev": "webpack-dev-server --hot",
     "webpack-production": "webpack -p --env.production",
     "build-css": "elm-css src/Stylesheets.elm",
