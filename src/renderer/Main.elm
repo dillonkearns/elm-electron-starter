@@ -6,20 +6,26 @@ import Html.Events exposing (onClick)
 
 main : Program Never Model Msg
 main =
-    Html.beginnerProgram
-        { model = init
+    Html.program
+        { init = init
         , view = view
         , update = update
+        , subscriptions = subscriptions
         }
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
 
 
 type alias Model =
     Int
 
 
-init : Model
+init : ( Model, Cmd Msg )
 init =
-    0
+    ( 0, Cmd.none )
 
 
 type Msg
@@ -27,14 +33,14 @@ type Msg
     | Decrement
 
 
-update : Msg -> Model -> Model
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Increment ->
-            model + 1
+            ( model + 1, Cmd.none )
 
         Decrement ->
-            model - 1
+            ( model - 1, Cmd.none )
 
 
 view : Model -> Html Msg
