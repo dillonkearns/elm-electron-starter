@@ -16,3 +16,5 @@ git clone https://github.com/dillonkearns/elm-electron-starter.git
 npm install
 npm start
 ```
+
+Do a project-wide search for `your` and fill in all instances of `yourname`, `yourappname`, etc.
