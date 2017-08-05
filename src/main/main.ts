@@ -40,7 +40,7 @@ function createMainWindow() {
   })
   let devUrl = url.format({
     hostname: 'localhost',
-    pathname: path.join('index.html'),
+    pathname: path.join('src/renderer/index.html'),
     port: '8080',
     protocol: 'http',
     slashes: true
