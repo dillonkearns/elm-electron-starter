@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=dev concurrently --kill-others 'npm run webpack-dev' 'npm run build-node && electron .'",
     "startfull": "NODE_ENV=dev concurrently --kill-others 'npm run generate-ipc && npm run webpack-dev' 'npm run build-node && npm test && npm run build-css && electron .'",
-    "startprod": "NODE_ENV=production npm test && npm run build-node && npm run webpack-production && electron .",
+    "startprod": "NODE_ENV=production npm run build-node && npm run webpack-production && electron .",
     "webpack-dev": "webpack-dev-server --hot",
     "webpack-production": "webpack -p --env.production",
     "build-css": "elm-css src/Stylesheets.elm",
@@ -28,10 +28,7 @@
     }
   },
   "repository": "https://github.com/yourgithubusernamename/yourgithubpackagename",
-  "keywords": [
-    "Electron",
-    "yourkeyword"
-  ],
+  "keywords": ["Electron", "yourkeyword"],
   "author": "Your Name",
   "license": "MIT",
   "devDependencies": {

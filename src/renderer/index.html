@@ -6,8 +6,12 @@
   </head>
   <body>
     <script type="text/javascript">
-    const $ = require('jquery')
-$.getScript('http://localhost:8080/renderer.bundle.js')
+    const isDev = process.env.NODE_ENV === 'dev'
+const scriptSrc = isDev
+  ? 'http://localhost:8080/renderer.bundle.js'
+  : '../../dist/renderer.bundle.js'
+const $ = require('jquery')
+$.getScript(scriptSrc)
 </script>
   </body>
 </html>

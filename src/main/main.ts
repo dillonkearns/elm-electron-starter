@@ -33,15 +33,19 @@ let mainWindow: Electron.BrowserWindow
 function createMainWindow() {
   mainWindow = new BrowserWindow({ width: 800, height: 600 })
 
-  mainWindow.loadURL(
-    url.format({
-      hostname: 'localhost',
-      pathname: path.join('src/renderer/index.html'),
-      protocol: 'http:',
-      port: '8080',
-      slashes: true
-    })
-  )
+  let isDevEnv = process.env.NODE_ENV === 'dev'
+  let prodUrl = url.format({
+    pathname: path.join(__dirname, 'src/renderer/index.html'),
+    protocol: 'file:'
+  })
+  let devUrl = url.format({
+    hostname: 'localhost',
+    pathname: path.join('index.html'),
+    port: '8080',
+    protocol: 'http',
+    slashes: true
+  })
+  mainWindow.loadURL(isDevEnv ? devUrl : prodUrl)
 }
 
 const focusMainWindow = () => {
