@@ -23,12 +23,12 @@ subscriptions model =
 
 
 type alias Model =
-    Int
+    { counter : Int }
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( 0, Cmd.none )
+    ( { counter = 0 }, Cmd.none )
 
 
 type Msg
@@ -41,10 +41,10 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Increment ->
-            ( model + 1, Cmd.none )
+            ( { model | counter = model.counter + 1 }, Cmd.none )
 
         Decrement ->
-            ( model - 1, Cmd.none )
+            ( { model | counter = model.counter - 1 }, Cmd.none )
 
         SendIpc ipcMsg ->
             model ! [ sendIpcCmd ipcMsg ]
