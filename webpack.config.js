@@ -4,7 +4,7 @@ const path = require('path')
 const config = env => {
   return {
     entry: {
-      renderer: './src/renderer/renderer.ts'
+      index: './src/renderer/index.ts'
     },
     target: 'electron-renderer',
     output: {
