@@ -6,7 +6,6 @@ See the "Main Process" section in the docs: https://electron.atom.io/docs/
 import { ipcMain, app, Tray, BrowserWindow, screen, dialog } from 'electron'
 import * as fs from 'fs'
 const isLocal = require('electron-is-dev')
-// import { Ipc, ElmIpc } from './typescript/ipc'
 
 const transparencyDisabled = fs.existsSync(
   `${app.getPath('userData')}/NO_TRANSPARENCY`
