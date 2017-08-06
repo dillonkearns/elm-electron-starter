@@ -1,7 +1,8 @@
 module Main exposing (..)
 
-import Html exposing (Html, button, div, h1, p, text)
-import Html.Events exposing (onClick)
+import Html exposing (Html, button, div, h1, input, p, text)
+import Html.Attributes exposing (placeholder, value)
+import Html.Events exposing (onClick, onInput)
 import Ipc
 import IpcSerializer
 import Ports
@@ -23,18 +24,21 @@ subscriptions model =
 
 
 type alias Model =
-    { counter : Int }
+    { counter : Int
+    , name : String
+    }
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( { counter = 0 }, Cmd.none )
+    ( { counter = 0, name = "" }, Cmd.none )
 
 
 type Msg
     = Increment
     | Decrement
     | SendIpc Ipc.Msg
+    | NameChanged String
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -47,7 +51,10 @@ update msg model =
             ( { model | counter = model.counter - 1 }, Cmd.none )
 
         SendIpc ipcMsg ->
-            model ! [ sendIpcCmd ipcMsg ]
+            ( model, sendIpcCmd ipcMsg )
+
+        NameChanged newName ->
+            ( { model | name = newName }, Cmd.none )
 
 
 sendIpcCmd : Ipc.Msg -> Cmd Msg
@@ -63,8 +70,9 @@ view model =
         [ h1 [] [ text "Welcome!" ]
         , p [] [ text "Change this file and save to see hot module replacement! Notice the application state is retained." ]
         , button [ onClick Decrement ] [ text "-" ]
-        , div [] [ text (toString model) ]
         , button [ onClick Increment ] [ text "+" ]
+        , div [] [ text (toString model) ]
+        , input [ placeholder "Your name", value model.name, onInput NameChanged ] []
         , button [ onClick (SendIpc Ipc.GreetingDialog) ] [ text "Greeting Dialog" ]
         , button [ onClick (SendIpc Ipc.Quit) ] [ text "Quit" ]
         ]
