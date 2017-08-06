@@ -17,4 +17,4 @@ npm install
 npm start
 ```
 
-Do a project-wide search for `your` and fill in all instances of `yourname`, `yourappname`, etc.
+Do a project-wide case-insensitive search for `your` and fill in all instances of `yourname`, `yourappname`, etc.
