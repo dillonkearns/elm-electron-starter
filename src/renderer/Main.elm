@@ -50,7 +50,7 @@ update msg model =
             model ! [ sendIpcCmd ipcMsg ]
 
 
-sendIpcCmd : Ipc.Msg -> Cmd msg
+sendIpcCmd : Ipc.Msg -> Cmd Msg
 sendIpcCmd ipcMsg =
     ipcMsg
         |> IpcSerializer.serialize
