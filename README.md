@@ -1,5 +1,5 @@
 # Elm Ts Electron Starter
-Get up and running with a cross-platform desktop app built in Elm. Electron allows you to render web pages in Elm as native desktop interfaces. Electron runs a web page and manages native desktop interfaces (quit application, set global shortcut, create multiple windows, etc.) using NodeJS.
+Get up and running with a cross-platform desktop app built in Elm. Electron allows you to render web pages in Elm as native desktop interfaces. Electron runs a web page and manages native desktop interfaces (quit application, set global shortcut, create multiple windows, etc.) using NodeJS. See [jlord.us/essential-electron/](http://jlord.us/essential-electron/) for an excellent, readable conceptual overview of Electron.
 
 Main Stack:
 * `Electron`
