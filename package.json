@@ -1,7 +1,7 @@
 {
   "name": "Yourappname",
   "version": "0.0.1",
-  "description": "TODO",
+  "description": "Your description",
   "main": "main.js",
   "scripts": {
     "start": "NODE_ENV=dev concurrently --kill-others 'webpack-dev-server --hot' 'npm run build-main && electron .'",
