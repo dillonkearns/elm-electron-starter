@@ -10,6 +10,9 @@ Main Stack:
 
 Elm Electron Starter uses typescript for the NodeJS code. It communicates between NodeJS/Typescript process and the Elm application using the npm package `elm-electron` to get type-safe inter-process messages.
 
+![RPG Mode](/demo.gif)
+
+## Setup
 To run, just
 ```bash
 git clone https://github.com/dillonkearns/elm-electron-starter.git
