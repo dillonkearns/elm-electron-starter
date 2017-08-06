@@ -1,7 +1,11 @@
 # Elm Electron Starter
-Get up and running with a cross-platform desktop app built in Elm. Electron allows you to render web pages in Elm as native desktop interfaces. Electron runs a web page and manages native desktop interfaces (quit application, set global shortcut, create multiple windows, etc.) using NodeJS. See [jlord.us/essential-electron/](http://jlord.us/essential-electron/) for an excellent, readable conceptual overview of Electron.
+Get up and running with a cross-platform desktop app built in Elm.
 
-Main Stack:
+![Type-Safe IPC Messages](/demo.gif)
+
+Electron allows you to render web pages in Elm as native desktop interfaces. Electron runs a web page and manages native desktop interfaces (quit application, set global shortcut, create multiple windows, etc.) using NodeJS. See [jlord.us/essential-electron/](http://jlord.us/essential-electron/) for an excellent, readable conceptual overview of Electron.
+
+### Main Stack
 * `Electron`
 * `Elm` (for the browser window part of Electron)
 * `typescript` (for the NodeJS part of Electron)
@@ -9,8 +13,6 @@ Main Stack:
 * `elm-test`
 
 Elm Electron Starter uses typescript for the NodeJS code. It communicates between NodeJS/Typescript process and the Elm application using the npm package `elm-electron` to get type-safe inter-process messages.
-
-![RPG Mode](/demo.gif)
 
 ## Setup
 To run, just
